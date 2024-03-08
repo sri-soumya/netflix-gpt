@@ -3,11 +3,15 @@ import Header from "./Header";
 import { checkValidEmailAndPassword } from "../utils/validation";
 import { signUpOrSignInUser } from "../utils/signUpOrSignInUser";
 import { useSelector } from "react-redux";
+import { Icon } from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [validEmailAndPasswordMessage, setValidEmailAndPasswordMessage] =
     useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const email = useRef(null);
   const password = useRef(null);
   const displayName = useRef(null);
@@ -64,12 +68,25 @@ const Login = () => {
           type="text"
           placeholder="Email or phone number"
         />
-        <input
-          ref={password}
-          className="p-3 my-4 w-full bg-gray-950 border border-white rounded-md"
-          type="password"
-          placeholder="Password"
-        />
+        <div className="flex justify-between items-center my-4  w-full bg-gray-950 border border-white rounded-md">
+          <input
+            className="bg-gray-950 w-[85%] p-3 border border-none rounded-md outline-none"
+            ref={password}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+          />
+          <span
+            onClick={() => {
+              setShowPassword(!showPassword);
+            }}
+          >
+            <Icon
+              className="mr-2 cursor-pointer"
+              size={18}
+              icon={showPassword ? eye : eyeOff}
+            />
+          </span>
+        </div>
         {validEmailAndPasswordMessage}
         <button
           className="p-3 my-6 bg-red-700 w-full rounded-md"
