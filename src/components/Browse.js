@@ -7,12 +7,11 @@ import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import GptSearchPage from "./GptSearchPage";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import MoreInfo from "./MoreInfo";
 import useGenre from "../hooks/useGenre";
 
 const Browse = () => {
-  const dispatch = useDispatch();
   useNowPlayingMovies();
   useTopRatedMovies();
   useUpcomingMovies();

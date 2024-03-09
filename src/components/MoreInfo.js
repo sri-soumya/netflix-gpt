@@ -4,11 +4,19 @@ import PopupTitle from "./PopupTitle";
 import { useDispatch, useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
 import useGetMovieCredits from "../hooks/useGetMovieCredits";
-import { addMoreInfoMovie } from "../utils/moviesSlice";
+import {
+  addCast,
+  addMoreInfoMovie,
+  addMoreInfoTrailer,
+  addSimilarMovies,
+  addStreamingOptions,
+} from "../utils/moviesSlice";
 import useMoreInfoTrailer from "../hooks/useMoreInfoTrailer";
 import useSimilarMovies from "../hooks/useSimilarMovies";
 import MovieList from "./MovieList";
 import MoreInfoMovieList from "./MoreInfoMovieList";
+import useGetStreamingOptions from "../hooks/useGetStreamingOptions";
+import WhereToWatch from "./WhereToWatch";
 
 const MoreInfo = () => {
   const dispatch = useDispatch();
@@ -19,6 +27,7 @@ const MoreInfo = () => {
   useGetMovieCredits(movie?.id);
   useMoreInfoTrailer(movie?.id);
   useSimilarMovies(movie?.id);
+  useGetStreamingOptions(movie?.id);
 
   const trailer = useSelector((store) => store.movies.moreInfoTrailer);
   if (!movie) return;
@@ -30,7 +39,14 @@ const MoreInfo = () => {
       <PopupTitle title={movie.title} />
       <VideoBackground trailer={trailer} />
       <button
-        onClick={() => dispatch(addMoreInfoMovie(null))}
+        onClick={() => {
+          dispatch(addMoreInfoMovie(null));
+          dispatch(addCast(null));
+          dispatch(addMoreInfoMovie(null));
+          dispatch(addMoreInfoTrailer(null));
+          dispatch(addSimilarMovies(null));
+          dispatch(addStreamingOptions(null));
+        }}
         className="bg-black w-10 h-10 text-center font-bold rounded-full absolute top-10 right-10"
       >
         X
@@ -58,6 +74,8 @@ const MoreInfo = () => {
           )}
         </div>
       </div>
+      <WhereToWatch />
+
       {similarMovies && similarMovies.length > 0 && (
         <MoreInfoMovieList
           title={`More Like ${movie.title}`}

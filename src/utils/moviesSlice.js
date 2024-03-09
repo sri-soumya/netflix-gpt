@@ -13,6 +13,7 @@ const moviesSlice = createSlice({
     moreInfo: null,
     moreInfoTrailer: null,
     similar: null,
+    streamingOptions: null,
   },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -45,6 +46,9 @@ const moviesSlice = createSlice({
     addSimilarMovies: (state, action) => {
       state.similar = action.payload;
     },
+    addStreamingOptions: (state, action) => {
+      state.streamingOptions = action.payload;
+    },
   },
 });
 
@@ -59,5 +63,6 @@ export const {
   addMoreInfoMovie,
   addMoreInfoTrailer,
   addSimilarMovies,
+  addStreamingOptions,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

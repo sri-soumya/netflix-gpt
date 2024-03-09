@@ -12,6 +12,14 @@ export const API_OPTIONS = {
   },
 };
 
+export const STREAMING_AVAILABILITY_API_OPTIONS = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": process.env.REACT_APP_STREAMING_AVAILABILITY_KEY,
+    "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+  },
+};
+
 export const NOW_PLAYING_MOVIES_API =
   "https://api.themoviedb.org/3/movie/now_playing?page=1";
 export const POPULAR_MOVIES_API =
@@ -21,7 +29,8 @@ export const TOP_RATED_MOVIES_API =
 export const UPCOMING_MOVIES_API =
   "https://api.themoviedb.org/3/movie/upcoming?page=1";
 export const GENRE_API = "https://api.themoviedb.org/3/genre/movie/list";
-
+export const STREAMING_AVAILABILITY_API =
+  "https://streaming-availability.p.rapidapi.com/get?output_language=en&tmdb_id=movie/";
 export const IMG_CDN = "https://image.tmdb.org/t/p/w500";
 
 export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY;
