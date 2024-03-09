@@ -12,7 +12,7 @@ const WhereToWatch = () => {
       <h1 className="text-3xl">Where To Watch In India</h1>
       <div className="flex mt-4 mb-8">
         {streamingOptions.map((option) => (
-          <div className="border border-solid border-gray-600 ml-2 px-4 py-1">
+          <div className="border border-solid border-gray-600 mr-2 px-4 py-1">
             <Link target="_blank" to={option[2]} className="text-center">
               {option[0]}
 
