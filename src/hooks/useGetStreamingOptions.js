@@ -16,9 +16,7 @@ const useGetStreamingOptions = (moviedId) => {
       STREAMING_AVAILABILITY_API_OPTIONS
     );
     const json = await data.json();
-    console.log(json);
     const indiaData = json?.result?.streamingInfo?.in;
-    console.log(indiaData);
     if (!indiaData) return;
     const serviceAndLink = [];
 
